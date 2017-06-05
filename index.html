@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+	<style type="text/css">
+		#parent{
+			background-image: url("iphone.jpg");
+			background-size: cover;
+			width: 100%; height: 655px;
+			font-weight: lighter;
+		}
+		table, td{
+			border: black;
+			font-size: 30px;
+			text-align: center;
+			font-family: arial;
+			margin-left: 386px;
+			padding: 0 14px 4px 12.6px;
+			height: 65px;
+		}
+		table{
+			margin-top: -135px;
+		}
+
+		th {
+			background-color: none;
+			font-size: 35px; 
+			color: white;
+		}
+		.calculator{
+			margin-top: 255px;
+			position: absolute;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.sevenfourone{
+			background-color: lightgray;
+			text-align: center;
+			width: 30px;
+		} 	
+		.sevenfourone:hover{
+			background-color: silver;
+		}
+		.eightfivetwo{
+			font-size: 30px;
+			text-align: center;
+			background-color: lightgray;
+			width: 30px;
+		}	
+		.eightfivetwo:hover{
+			background-color: darkgray
+		}	
+		.ninesixthree{
+			background-color: lightgray;
+			text-align: center;
+			width: 30px;
+		}
+		.ninesixthree:hover{
+			background-color: silver;
+		}
+		.zero{
+			background-color: lightgray;
+			text-align: center;
+			height: 55px;
+		}
+		.zero:hover{
+			background-color: gray;
+		}
+		.orange{
+			background-color: orange;
+			width: 35px;
+		}
+		.orange:hover{
+			background-color: darkorange;
+		}
+		input{
+		   display: inline-block;
+		   width: 100%;       
+		   height: 100%;     
+		   background-color: transparent;
+		   border-radius: 5px;
+		   border: 0;
+		   padding:0;
+		}
+		#Input2 {
+    	visibility: hidden;
+		}
+	</style>
+</head>
+<body>
+	<div class="backgroundphoto">
+	</div>
+	<div id="parent">
+	<form name="Calc">
+		<div class="calculator">
+			<form name="Calc">
+			<table border=4>
+				<th colspan="4" align="right"><input class="zero" type="text" placeholder="0" name="Input"></th>
+				<tr> 
+					<td class="sevenfourone"><input type="button" onclick="Calc.Input.value=''" value="AC"></td>
+					<td class="eightfivetwo"><input type="button" onclick="Calc.Input.value=Calc.Input.value.substring(0, Calc.Input.value.length -1)" value="C"></td>
+					<td class="eightfivetwo"><input type="button" onclick="Calc.Input.value=avgFunction(document.getElementById('Input2').innerHTML)" value="Avg"></td>
+					<td class="orange"><input type="button" onclick="Calc.Input.value += '/'" value="/"></td>
+				</tr>
+				<tr>
+					<td class="sevenfourone"><input type="button" id="firstcolumn" onclick="Calc.Input.value += '7'" value="7"></td>
+					<td class="eightfivetwo"><input type="button" onclick="Calc.Input.value += '8'" value="8"></td>
+					<td class="ninesixthree"><input type="button" onclick="Calc.Input.value += '9'" value="9"></td>
+					<td class="orange"><input type="button" onclick="Calc.Input.value += '*'" value="x"></td>
+				</tr>
+				<tr>
+					<td class="sevenfourone"><input type="button" onclick="Calc.Input.value += '4'" value="4"></td>
+					<td class="eightfivetwo"><input type="button" onclick="Calc.Input.value += '5'" value="5"></td>
+					<td class="ninesixthree"><input type="button" onclick="Calc.Input.value += '6'" value="6"></td>
+					<td class="orange"><input type="button" onclick="Calc.Input.value += '-'" value="-"</td>
+				</tr>
+				<tr>
+					<td class="sevenfourone"><input type="button" onclick="Calc.Input.value += '1'" value="1"></td>
+					<td class="eightfivetwo"><input type="button" onclick="Calc.Input.value += '2'" value="2"></td>
+					<td class="ninesixthree"><input type="button" onclick="Calc.Input.value += '3'" value="3"></td>
+					<td class="orange"><input type="button" onclick="Calc.Input.value += '+'" value="+"></td>
+				</tr>
+				<tr> 
+					<td class="zero" colspan="2"><input type="button" onclick="Calc.Input.value += '0'" value="0"></td>
+					<td class="ninesixthree"><input type="button" onclick="Calc.Input.value += '.'" value="."></td>
+					<td class="orange"><input type="button" onclick= "document.getElementById('Input2').innerHTML=Calc.Input.value; Calc.Input.value = eval(Calc.Input.value);" value="="></td>
+				</tr>
+			</table>
+			</form>
+			<p id="Input2"></p>
+
+	</div>
+<script>
+
+function avgFunction(theAverage) {
+    var i=0;
+    var result=0;
+    if (theAverage.length>0){
+	    result=eval(theAverage);
+	    for (i=0;i<theAverage.length;i=i+1){
+		    theAverage=theAverage.replace("+","@");
+		    theAverage=theAverage.replace("-","@");
+		    theAverage=theAverage.replace("*","@");
+		    theAverage=theAverage.replace("/","@");
+	    }
+	    theAverage=theAverage.split("@");
+	    average=result/theAverage.length;
+	 }   
+  	return average;
+}
+
+</script>
+</body>
+</html>
